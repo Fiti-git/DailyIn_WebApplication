@@ -18,7 +18,7 @@ export default function TransactionPage() {
         setLoading(true);
         setError(null);
 
-        const response = await axios.get('http://127.0.0.1:8000/api/transaction/transactions_api/', {
+        const response = await axios.get('http://206.189.134.117:8000/api/transaction/transactions_api/', {
           headers: {
             Accept: 'application/json',
             Authorization: `Bearer ${token}`,

@@ -18,7 +18,7 @@ export default function OutletPage() {
       setLoading(true);
       setError(null);
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/emp/outlets_api/', {
+        const response = await fetch('http://206.189.134.117:8000/api/emp/outlets_api/', {
           method: 'GET',
           headers: {
             'Accept': 'application/json',
@@ -56,7 +56,7 @@ export default function OutletPage() {
     setError(null);
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/emp/outlets_api/', {
+      const response = await fetch('http://206.189.134.117:8000/api/emp/outlets_api/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

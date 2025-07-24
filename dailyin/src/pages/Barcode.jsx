@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import jsPDF from 'jspdf';
 import JsBarcode from 'jsbarcode'; // Import JsBarcode
 
+
 export default function BarcodePage() {
   const [products, setProducts] = useState([]);
   const [selectedIds, setSelectedIds] = useState([]);
@@ -13,7 +14,7 @@ export default function BarcodePage() {
     const fetchProducts = async () => {
       try {
         const token = localStorage.getItem('accessToken');
-        const res = await fetch('http://127.0.0.1:8000/api/product/products_api/', {
+        const res = await fetch('http://206.189.134.117:8000/api/product/products_api/', {
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,
@@ -74,7 +75,17 @@ export default function BarcodePage() {
   };
 
   const columns = [
-    
+    {
+      field: 'select',
+      headerName: '',
+      width: 50,
+      renderCell: (params) => (
+        <Checkbox
+          checked={selectedIds.includes(params.row.id)}
+          onChange={() => handleSelect(params.row.id)}
+        />
+      ),
+    },
     { field: 'Itcode', headerName: 'Item Code', width: 150 },
     { field: 'ItDesc', headerName: 'Description', width: 250 },
     { field: 'RackNo', headerName: 'Rack No', width: 150 },
@@ -97,23 +108,22 @@ export default function BarcodePage() {
       </Typography>
 
       <Paper sx={{ marginTop: 2 }}>
-        <div style={{ height: 400, width: '90vw' ,borderRadius: '5px',}}>
+        <div style={{ height: 400, width: '90vw' }}>
           <DataGrid
             rows={rows}
             columns={columns}
             pageSize={5}
-            checkboxSelection
-            disableSelectionOnClick
+            //checkboxSelection
+            //disableSelectionOnClick
           />
         </div>
       </Paper>
 
-      <Box sx={{ marginTop: 2, display: 'flex', justifyContent: 'flex-end' }}>
-  <Button variant="contained" color="primary" onClick={handlePrint}>
-    Print Selected Barcodes
-  </Button>
-</Box>
-
+      <Box sx={{ marginTop: 2 }}>
+        <Button variant="contained" color="primary" onClick={handlePrint}>
+          Print Selected Barcodes
+        </Button>
+      </Box>
     </Box>
   );
 }

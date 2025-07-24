@@ -23,7 +23,7 @@ export default function EmployeePage() {
   useEffect(() => {
     const fetchOutlets = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/emp/outlets_api/', {
+        const response = await fetch('http://206.189.134.117:8000/api/emp/outlets_api/', {
           headers: {
             'Accept': 'application/json',
             'Authorization': `Bearer ${accessToken}`
@@ -47,7 +47,7 @@ export default function EmployeePage() {
       if (!accessToken) return;
 
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/emp/employee-readonly/', {
+        const response = await fetch('http://206.189.134.117:8000/api/emp/employee-readonly/', {
           headers: {
             'Accept': 'application/json',
             'Authorization': `Bearer ${accessToken}`
@@ -97,7 +97,7 @@ export default function EmployeePage() {
     };
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/emp/employee-profiles_api/', {
+      const response = await fetch('http://206.189.134.117:8000/api/emp/employee-profiles_api/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
